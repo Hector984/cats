@@ -15,7 +15,10 @@ class CreateCatsTable extends Migration
     {
         Schema::create('cats', function (Blueprint $table) {
             $table->id();
-            $table->string('img');
+            $table->string('name');
+            $table->text('description');
+            $table->string('img_name');
+            $table->string('img_path');
             $table->timestamps();
         });
     }

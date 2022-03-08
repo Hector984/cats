@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cat;
 use Illuminate\Http\Request;
 
 class CatsController extends Controller
@@ -11,11 +12,34 @@ class CatsController extends Controller
         return response()->json(200);
     }
 
+    public function show($id){
+        
+        $cat = Cat::findOrFail($id);
+    }
+
+    public function create(){
+
+    }
+
     public function store(Request $request){
-        $data = $request->validate([
-            'img' => 'required'
+        
+        $request->validate([
+            'catName' => 'required',
+            'description' => 'required',
         ]);
 
-        dd($data['img']);
+        
+        $cat = Cat::create([
+            'name' => $request->get('catName'),
+            'description' => $request->get('description'),
+            'img_name' => $request->file('img')->getClientOriginalName(),
+            'img_path' => $request->file('img')->store('cats', 'public')
+        ]);
+        
+        return response()->json([
+            'Success' => 'New cat created'
+        ],201);
     }
+
+    
 }
