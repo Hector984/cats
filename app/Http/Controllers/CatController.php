@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Cat;
 use Illuminate\Http\Request;
+use App\Http\Resources\CatResource;
 
-class CatsController extends Controller
+class CatController extends Controller
 {
     public function index(){
 
-        return response()->json(200);
+        //return Cat::latest()->get();
+        return CatResource::collection(Cat::latest()->get());
     }
 
     public function show($id){
@@ -17,10 +20,9 @@ class CatsController extends Controller
         $cat = Cat::findOrFail($id);
     }
 
-    public function create(){
-
-    }
-
+    /**
+     * Store a cat
+     */
     public function store(Request $request){
         
         $request->validate([
@@ -40,6 +42,4 @@ class CatsController extends Controller
             'Success' => 'New cat created'
         ],201);
     }
-
-    
 }
