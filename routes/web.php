@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\web\CatController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,8 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('cats.index');
 
 Route::get('/cats', function () {
     return view('cats');
-});
+})->name('cats.all');
+
+
+Route::get('/cats/{cat}', function(){
+    return view('cat');
+})->name('cat');

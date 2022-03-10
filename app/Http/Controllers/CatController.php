@@ -11,13 +11,12 @@ class CatController extends Controller
 {
     public function index(){
 
-        //return Cat::latest()->get();
         return CatResource::collection(Cat::latest()->get());
     }
 
-    public function show($id){
+    public function show(Cat $cat){
         
-        $cat = Cat::findOrFail($id);
+        return new CatResource($cat);
     }
 
     /**
