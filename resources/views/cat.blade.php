@@ -27,7 +27,7 @@
             </div>
         </nav>
         
-        <div class="container border mt-5 w-75" style="background:white;height:577px;">
+        <div class="container border mt-5 w-75" style="background:white;">
             <div class="row mt-3"></div>
         </div>
 

@@ -70,7 +70,6 @@
         container.innerHTML = html;
 
     }
-    // <img src="${cat.img_path}" class="card-img-top rounded-2 mt-3" style="height:152px;">
 
     getCats();
 </script>
