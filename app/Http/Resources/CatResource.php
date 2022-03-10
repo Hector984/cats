@@ -15,8 +15,9 @@ class CatResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'img' => $this->img_name,
-            'img_path' => $this->img_path,
+            'img_path' => url("storage/$this->img_path"),
             'name' => $this->name,
             'text' => $this->description,
         ];

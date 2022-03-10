@@ -16,6 +16,7 @@ class CatController extends Controller
      */
     public function index()
     {
+        //$request = Request::create('/api/page/'.$idPage, 'GET');
         //return Http::dd()->get("http://127.0.0.1:8000/api/cats");
         return view('cats');
     }
