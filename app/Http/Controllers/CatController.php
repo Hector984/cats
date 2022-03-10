@@ -11,7 +11,7 @@ class CatController extends Controller
 {
     public function index(){
 
-        return CatResource::collection(Cat::latest()->get());
+        return CatResource::collection(Cat::inRandomOrder()->get());
     }
 
     public function show(Cat $cat){
@@ -29,12 +29,14 @@ class CatController extends Controller
             'description' => 'required',
         ]);
 
-        
+        $image = $request->file('img');
+        $image->move(public_path('/images'), $image->getClientOriginalName());
+
         $cat = Cat::create([
             'name' => $request->get('catName'),
             'description' => $request->get('description'),
-            'img_name' => $request->file('img')->getClientOriginalName(),
-            'img_path' => $request->file('img')->store('cats', 'public')
+            'img_name' => $image->getClientOriginalName(),
+            'img_path' => "/images/".$image->getClientOriginalName()
         ]);
         
         return response()->json([

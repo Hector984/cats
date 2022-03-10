@@ -50,7 +50,7 @@
         const data = await response.json();
         const cats = data.data;
 
-        //console.log(cats);
+        console.log(cats);
         cats.forEach(cat => {
         
         let htmlSegment = `<div class="col-12 col-sm-6 col-xl-4 col-xxl-4 d-flex justify-content-center justify-content-sm-evenly p-0">

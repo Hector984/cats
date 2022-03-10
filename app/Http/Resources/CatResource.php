@@ -17,7 +17,7 @@ class CatResource extends JsonResource
         return [
             'id' => $this->id,
             'img' => $this->img_name,
-            'img_path' => url("storage/$this->img_path"),
+            'img_path' => URL("$this->img_path"),
             'name' => $this->name,
             'text' => $this->description,
         ];
